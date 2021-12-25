@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
 export const WrapperLayout = styled.section`
-  margin: 16px;
+  padding: 16px;
+  background-color: #E7E7E7;
 `;

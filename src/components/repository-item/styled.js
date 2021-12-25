@@ -8,6 +8,7 @@ export const Wrapper = styled.div`
   width: 350px;
   height: 150px;
   align-content: center;
+  background-color: #FFF;
 `;
 
 export const WrapperTitle = styled.h2`
