@@ -1,18 +1,11 @@
 pipeline {
     agent {
-        label 'docker' 
-    }
-
-    stages {
-        stage('Docker node test') {
-            agent {
-                docker {
-                label 'docker'
-                image 'node:7-alpine'
-                args '--name docker-node'
-                }
-            }
+        docker {
+            image 'node:lts-bullseye-slim' 
+            args '-p 3000:3000' 
         }
+    }
+    stages {
         stage('Build') { 
             steps {
                 sh 'npm install' 
