@@ -11,7 +11,6 @@ pipeline {
                 sh 'npm install'
             }
         }
-
         stage('Deliver') {
             steps {
                 sh "chmod +x -R ${env.WORKSPACE}"
