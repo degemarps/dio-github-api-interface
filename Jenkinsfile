@@ -12,7 +12,7 @@ pipeline {
         stage('run') {
             steps {
                 sh """
-                    docker run -d --name react_app_dio -it react_app
+                    docker run -d --name react_app_dio -p 3000:3000 -it react_app
                 """
             }
         }
