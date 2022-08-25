@@ -9,11 +9,16 @@ pipeline {
                 """
             }
         }
-        stage('run') {
+        stage('Run') {
             steps {
                 sh """
                     docker run -d --name react_app_dio -p 3000:3000 -it react_app
                 """
+            }
+        }
+        stage('Test') {
+            steps {
+                build job: 'selenium'
             }
         }
         // stage('Test') {
