@@ -21,6 +21,12 @@ pipeline {
                 build job: 'selenium'
             }
         }
+        stage('Clear') {
+            steps {
+                sh 'docker stop react_app_dio'
+                sh 'docker rm react_app_dio'
+            }
+        }
         // stage('Test') {
         //     steps {
         //         sh "chmod +x -R ${env.WORKSPACE}"
