@@ -1,30 +1,35 @@
 pipeline {
-    agent {
-        docker {
-            image 'node:16-alpine'
-            args '-p 3000:3000'
-        }
-    }
+    agent any
+
     stages {
         stage('Build') {
             steps {
-                sh 'npm install'
+                sh """
+                    docker build -t react_app .
+                """
             }
         }
-        stage('Test') {
+        stage('run') {
             steps {
-                sh "chmod +x -R ${env.WORKSPACE}"
-                sh './scripts/test.sh'
+                sh """
+                    docker run -d --name react_app_dio -it react_app
+                """
             }
         }
-        stage('Deliver') {
-            steps {
-                sh "chmod +x -R ${env.WORKSPACE}"
-                sh './scripts/deliver.sh'
-                input message: 'Finished using the web site? (Click "Proceed" to continue)'
-                sh './scripts/kill.sh'
-            }
-        }
+        // stage('Test') {
+        //     steps {
+        //         sh "chmod +x -R ${env.WORKSPACE}"
+        //         sh './scripts/test.sh'
+        //     }
+        // }
+        // stage('Deliver') {
+        //     steps {
+        //         sh "chmod +x -R ${env.WORKSPACE}"
+        //         sh './scripts/deliver.sh'
+        //         input message: 'Finished using the web site? (Click "Proceed" to continue)'
+        //         sh './scripts/kill.sh'
+        //     }
+        // }
 
     }
 }
