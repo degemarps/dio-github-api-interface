@@ -1,5 +1,5 @@
 import React from "react";
-// import Header from "./components/header";
+import Header from "./components/header";
 import Layout from "./components/layout";
 import NoSearch from "./components/no-search";
 import Profile from "./components/profile";
@@ -11,6 +11,7 @@ const App = () => {
   
   return (
     <>
+      <Header />
 
       <Layout>
         {githubState.hasUser ? (
